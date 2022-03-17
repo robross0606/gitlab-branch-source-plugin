@@ -48,6 +48,10 @@ public class GitLabSCMSourceContext
     private boolean projectAvatarDisabled;
 
     private String buildStatusNameCustomPart = "";
+    
+    private boolean buildNumberInStatusName;
+    
+    private boolean buildNumberInStatusDescription;
 
     public GitLabSCMSourceContext(@CheckForNull SCMSourceCriteria criteria,
         @NonNull SCMHeadObserver observer) {
@@ -126,6 +130,14 @@ public class GitLabSCMSourceContext
 
     public final String getBuildStatusNameCustomPart() {
         return buildStatusNameCustomPart;
+    }
+
+    public final boolean includeBuildNumberInStatusName() {
+        return buildNumberInStatusName;
+    }
+    
+    public final boolean includeBuildNumberInStatusDescription() {
+        return buildNumberInStatusDescription;
     }
 
     @NonNull
@@ -226,6 +238,18 @@ public class GitLabSCMSourceContext
     @NonNull
     public final GitLabSCMSourceContext withBuildStatusNameCustomPart(final String buildStatusNameCustomPart) {
         this.buildStatusNameCustomPart = Util.fixNull(buildStatusNameCustomPart);
+        return this;
+    }
+
+    @NonNull
+    public final GitLabSCMSourceContext withBuildNumberInStatusName(boolean enabled) {
+        this.buildNumberInStatusName = enabled;
+        return this;
+    }
+    
+    @NonNull
+    public final GitLabSCMSourceContext withBuildNumberInStatusDescription(boolean enabled) {
+        this.buildNumberInStatusDescription = enabled;
         return this;
     }
 
